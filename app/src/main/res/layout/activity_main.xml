@@ -59,12 +59,13 @@
         android:layout_marginBottom="@dimen/margin_bottom"
         >
 
-      <AutoCompleteTextView
-          android:id="@+id/txtGuzergahlar"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
+        <AutoCompleteTextView
+            android:id="@+id/txtGuzergahlar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
 
-          />
+            />
     </com.google.android.material.textfield.TextInputLayout>
     <TextView
         android:layout_width="match_parent"
@@ -85,6 +86,7 @@
             android:id="@+id/txtNumaralar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:enabled="false"
             />
     </com.google.android.material.textfield.TextInputLayout>
 

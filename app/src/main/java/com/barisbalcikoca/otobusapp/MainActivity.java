@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         new otobus_numara().start();
         new otobus_guzergah().start();
 
+
     }
 
     private void initComponents() {
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         otobusNumaraList = new ArrayList<>();
         otobusGuzergahList = new ArrayList<>();
+
     }
 
     private void registerEventHandlers() {
