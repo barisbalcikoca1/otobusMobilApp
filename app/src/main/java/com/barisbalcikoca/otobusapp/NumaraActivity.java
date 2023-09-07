@@ -24,12 +24,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NumaraActivity extends AppCompatActivity {
-    private TextView txtHatNo,txtSeferler;
+    TextView txtHatNo,txtSeferler;
     private ListView listView;
     Intent gelenIntent;
 
     ArrayList<String> seferSaatListesi = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    private String selectedValue="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class NumaraActivity extends AppCompatActivity {
 
         // Intent'ten gönderilen veriyi alın
         gelenIntent= getIntent();
+
         if (gelenIntent != null) {
             String selectedValue = gelenIntent.getStringExtra("selectedValue");
 

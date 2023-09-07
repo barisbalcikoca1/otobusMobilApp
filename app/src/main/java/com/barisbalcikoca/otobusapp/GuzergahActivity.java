@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ public class GuzergahActivity extends AppCompatActivity {
 
     ArrayList<String> guzergahAdinaGoreNumara = new ArrayList<>();
     ArrayAdapter<String> adapter;
+    String selectedValue = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +51,24 @@ public class GuzergahActivity extends AppCompatActivity {
                 txtGuzergahAdi.setText(selectedValue);
             }
         }
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String selectedValue = guzergahAdinaGoreNumara.get(position);
+
+                // Create an intent to start the next activity
+                Intent intent = new Intent(GuzergahActivity.this, NumaraActivity.class);
+
+                // Pass the selected item as extra data to the next activity
+                intent.putExtra("selectedValue", selectedValue);
+
+                // Start the next activity
+                startActivity(intent);
+            }
+        });
+
+
         new guzergah_adina_gore_numara().start();
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, guzergahAdinaGoreNumara);
         listView.setAdapter(adapter);

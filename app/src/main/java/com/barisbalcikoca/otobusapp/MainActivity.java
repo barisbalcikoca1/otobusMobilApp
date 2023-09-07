@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
         new otobus_numara().start();
         new otobus_guzergah().start();
 
-
     }
 
     private void initComponents() {
@@ -59,16 +58,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Uyhulama içersinde ana ekrana her gelindiğinde geçmişteki yani uygulama açıldığındaki o veri tutulmasın diye resum anında içeriğini temizliyorum.
+    @Override
+    protected void onResume() {
+        super.onResume();
+        otobusNumara.setText(""); // Numara alanını temizle
+        otobusGuzergah.setText(""); // Guzergah alanını temizle
+    }
+
     private void registerEventHandlers() {
         otobusNumara.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Seçilen veriyi alın
-                String selectedValue = (String) parent.getItemAtPosition(position);
+                String secilenNumara = (String) parent.getItemAtPosition(position);
 
                 // Alınan değeri NumaraActivity'e iletmek için bir Intent oluşturun
                 Intent intent = new Intent(MainActivity.this, NumaraActivity.class);
-                intent.putExtra("selectedValue", selectedValue); // Veriyi ekleyin
+                intent.putExtra("selectedValue", secilenNumara); // Veriyi ekleyin
                 // NumaraActivity'i başlatın
                 startActivity(intent);
             }
@@ -78,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // Seçilen veriyi alın
-                String selectedValue = (String) parent.getItemAtPosition(position);
+                String secilenGuzergah = (String) parent.getItemAtPosition(position);
 
                 // Alınan değeri NumaraActivity'e iletmek için bir Intent oluşturun
                 Intent intent = new Intent(MainActivity.this, GuzergahActivity.class);
-                intent.putExtra("selectedValue", selectedValue); // Veriyi ekleyin
+                intent.putExtra("selectedValue", secilenGuzergah); // Veriyi ekleyin
                 // NumaraActivity'i başlatın
                 startActivity(intent);
             }
