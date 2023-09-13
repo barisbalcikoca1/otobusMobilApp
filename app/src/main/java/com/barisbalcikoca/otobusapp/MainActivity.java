@@ -1,6 +1,7 @@
 package com.barisbalcikoca.otobusapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.splashscreen.SplashScreen;
 
 import android.content.Intent;
 import android.content.res.Resources;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen splashScreen = SplashScreen.installSplashScreen(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -104,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 otobusNumaraList.clear();
                 try {
                     JSONObject jsonData = new JSONObject();
-                    jsonData.put("islem", "otobus_numara");
+                    jsonData.put("islem", "e_otobus_numara");
 
                     JSONArray parametreler = new JSONArray();
                     parametreler.put("");
@@ -164,7 +167,7 @@ public class MainActivity extends AppCompatActivity {
                 otobusGuzergahList.clear();
                 try {
                     JSONObject jsonData = new JSONObject();
-                    jsonData.put("islem", "otobus_guzergah");
+                    jsonData.put("islem", "e_guzergah_ad");
 
                     JSONArray parametreler = new JSONArray();
                     parametreler.put("");

@@ -15,5 +15,13 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.OtobusApp" parent="Base.Theme.OtobusApp" />
+    <style name="AppTheme.Launcher" parent="Theme.SplashScreen">
+
+        <item name="windowSplashScreenBackground">@color/White</item>
+        <item name="android:windowBackground">@mipmap/ic_launcher_round</item>
+        <item name="postSplashScreenTheme">@style/Base.Theme.OtobusApp</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
 </resources>

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONStringer;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -73,15 +74,16 @@ public class NumaraActivity extends AppCompatActivity {
 
     private class otobus_numara_sefer extends Thread {
         String data ="";
+        String veri = "";
         @Override
         public void run(){
             {
                 try {
                     JSONObject jsonData = new JSONObject();
-                    jsonData.put("islem", "guzergah_aciklama_getir");
+                    jsonData.put("islem", "e_numaraya_gore_sefer");
 
                     JSONArray parametreler = new JSONArray();
-                    parametreler.put(txtHatNo.getText());
+                    parametreler.put(txtHatNo.getText().toString());
                     jsonData.put("parametreler", parametreler);
 
                     URL url = new URL("https://orakoglu.net/staj1/ayarlar1.php");
@@ -103,14 +105,26 @@ public class NumaraActivity extends AppCompatActivity {
                     if(!data.isEmpty()){
                         JSONObject obj = new JSONObject(data);
 
+
                         JSONArray otobusGuzergahArray = obj.getJSONArray("result");
                         //Toast.makeText(ShowActivity.this, cityArray2,Toast.LENGTH_SHORT).show(); Bu kullanılamıyor alt tarafta yazdığım kod güvenli olması için yazıldı
-                        for (int i = 0; i < otobusGuzergahArray.length(); i++) {
+                        /*for (int i = 0; i < otobusGuzergahArray.length(); i++) {
                             String numara_guzergah_seferler = otobusGuzergahArray.getString(i);
                             txtSeferler.setText(numara_guzergah_seferler);
-                        }
+                        }*/
+
+                        veri = (String) otobusGuzergahArray.get(0);
+
+                        String numara_guzergah_seferler = otobusGuzergahArray.getString(0);
 
                     }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            adapter.notifyDataSetChanged();
+                            txtSeferler.setText(veri);
+                        }
+                    });
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }catch (IOException e){
@@ -129,7 +143,7 @@ public class NumaraActivity extends AppCompatActivity {
             {
                 try {
                     JSONObject jsonData = new JSONObject();
-                    jsonData.put("islem", "kalkis_saati_getir");
+                    jsonData.put("islem", "e_otobus_kalkis_saat");
 
                     JSONArray parametreler = new JSONArray();
                     parametreler.put(txtHatNo.getText());
