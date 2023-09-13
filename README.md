@@ -1,2 +1,2 @@
 # otobusMobilApp
-Eskişehir Büyükşehir Belediyesi Otobüs Sefer Saat Mobil Uygulaması.
+Eskişehir Büyükşehir Belediyesi Otobüs Sefer Saat Mobil Uygulaması
